@@ -23,7 +23,7 @@ const Signupform = ({ onClick }) => {
       axios
         .post("/user", { ...values })
         .then((data) => {
-          successToast(data.data.status);
+          // successToast(data.data.status);
         })
         .catch((err) => errorToast(err.data.status));
     },
@@ -61,9 +61,8 @@ const Signupform = ({ onClick }) => {
           <input
             type="text"
             name="name"
-            className={`form-control ${
-              formik.errors.name ? "is-invalid" : null
-            }`}
+            className={`form-control ${formik.errors.name ? "is-invalid" : null
+              }`}
             placeholder="Enter Your name"
             id="name"
             onChange={formik.handleChange}
@@ -77,9 +76,8 @@ const Signupform = ({ onClick }) => {
           <input
             type="text"
             name="regNo"
-            className={`form-control ${
-              formik.errors.regNo ? "is-invalid" : null
-            }`}
+            className={`form-control ${formik.errors.regNo ? "is-invalid" : null
+              }`}
             placeholder="Enter Your Register No"
             id="regNo"
             onChange={formik.handleChange}
@@ -93,9 +91,8 @@ const Signupform = ({ onClick }) => {
           <input
             type="text"
             name="mobileNo"
-            className={`form-control ${
-              formik.errors.mobileNo ? "is-invalid" : null
-            }`}
+            className={`form-control ${formik.errors.mobileNo ? "is-invalid" : null
+              }`}
             placeholder="Enter Your mobileNumber"
             id="MobileNo"
             onChange={formik.handleChange}
@@ -108,9 +105,8 @@ const Signupform = ({ onClick }) => {
           <label>Email</label>
           <input
             type="email"
-            className={`form-control ${
-              formik.errors.email ? "is-invalid" : null
-            }`}
+            className={`form-control ${formik.errors.email ? "is-invalid" : null
+              }`}
             placeholder="email"
             name="email"
             id="email"
@@ -124,9 +120,8 @@ const Signupform = ({ onClick }) => {
           <label>Password</label>
           <input
             type="password"
-            className={`form-control ${
-              formik.errors.password ? "is-invalid" : null
-            }`}
+            className={`form-control ${formik.errors.password ? "is-invalid" : null
+              }`}
             placeholder="password"
             name="password"
             id="password"
@@ -141,9 +136,8 @@ const Signupform = ({ onClick }) => {
           <input
             type="text"
             name="dept"
-            className={`form-control ${
-              formik.errors.dept ? "is-invalid" : null
-            }`}
+            className={`form-control ${formik.errors.dept ? "is-invalid" : null
+              }`}
             placeholder="Enter Your dept"
             id="dept"
             onChange={formik.handleChange}

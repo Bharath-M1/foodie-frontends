@@ -7,13 +7,13 @@ function UpdateWallet() {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState();
   const [balance, setBalance] = useState();
+  const [userData, setUserData] = useState();
 
   useEffect(() => {
     myaxios
       .get("/user")
       .then((response) => {
         setUsers(response.data);
-        console.log(users);
       })
       .catch((err) => {
         console.log(err);
@@ -25,7 +25,8 @@ function UpdateWallet() {
     myaxios
       .get(`/user/${id}`)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
+        setUserData(response.data);
         setBalance(response.data.balance);
       })
       .catch((err) => {
@@ -49,43 +50,83 @@ function UpdateWallet() {
         console.log(err);
       });
   };
+  console.log(userData);
   const renderUsers = users.map((user) =>
     user.role !== "admin" ? <option value={user._id}>{user.regNo}</option> : ""
   );
   return (
     <Sidebar>
       <div className="my-5 mx-5 p-4">
-        <h5>UPDATE WALLET</h5>
-        <form>
-          <div className="my-3">
-            <label className="d-block fw-bold my-1">Reg No</label>
-            <select
-              className="form-control"
-              onChange={(e) => handleBalance(e.target.value)}
-              name="regNo"
-              required
-            >
-              {renderUsers}
-            </select>
-            <div className="my-3">
-              <label className="d-block fw-bold my-1">Quantity</label>
-              <input
-                className="form-control"
-                type="number"
-                value={balance}
-                onChange={(e) => setBalance(e.target.value)}
-                name="balance"
-                required
-              />
-            </div>
-          </div>
-          <button
-            className="btn bg-primary text-white fw-bold my-3"
-            onClick={(e) => handleSubmit(e)}
-          >
-            Update Wallet
-          </button>
-        </form>
+        <div className="row">
+          <div className="col"><h5>UPDATE WALLET</h5>
+            <form>
+              <div className="my-3">
+                <label className="d-block fw-bold my-1">Reg No</label>
+                <select
+                  className="form-control"
+                  onChange={(e) => handleBalance(e.target.value)}
+                  name="regNo"
+                  required
+                >
+                  {renderUsers}
+                </select>
+                <div className="my-3">
+                  <label className="d-block fw-bold my-1">Quantity</label>
+                  <input
+                    className="form-control"
+                    type="number"
+                    value={balance}
+                    onChange={(e) => setBalance(e.target.value)}
+                    name="balance"
+                    required
+                  />
+                </div>
+              </div>
+              <button
+                className="btn bg-primary text-white fw-bold my-3"
+                onClick={(e) => handleSubmit(e)}
+              >
+                Update Wallet
+              </button>
+            </form></div>
+          <div className="col">{userData ? <table class="table border rounded table-bordered table-info table-striped">
+            {/* <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead> */}
+            <tbody>
+              <tr>
+                <td>Student Name</td>
+                <td>
+                  {userData.name ? userData.name : "unknown"}
+                </td>
+              </tr>
+              <tr>
+                <td>Student Depatment</td>
+                <td>
+                  {userData.dept ? userData.dept : "unknown"}
+                </td>
+              </tr>
+              <tr>
+                <td>Account balance</td>
+                <td>
+                  {userData.dept ? userData.balance : "unknown"}
+                </td>
+              </tr>
+              <tr>
+                <td>Reg No</td>
+                <td>
+                  {userData.regNo ? userData.regNo : "unknown"}
+                </td>
+              </tr>
+            </tbody>
+          </table> : null}</div>
+        </div>
+
       </div>
     </Sidebar>
   );

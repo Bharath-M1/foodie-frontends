@@ -86,14 +86,14 @@ function Order() {
         <span>{order.products[0].productId.varient}</span>
       </p>
 
-      <div className="my-2">
+      {/* <div className="my-2">
         <button
           onClick={() => deleteOrder(order._id)}
           className="btn text-white mx-1 fw-bold w-full  bg-danger"
         >
           Delete Order
         </button>
-      </div>
+      </div> */}
     </Card>
   ));
   return (

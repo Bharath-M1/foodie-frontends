@@ -1,5 +1,5 @@
 import axios from "axios";
-let apiURL = "https://foodie-backend-rvs.herokuapp.com/home";
+let apiURL = "http://localhost:5000/home";
 let token = localStorage.getItem("user");
 const myaxios = axios.create({
   baseURL: apiURL,
