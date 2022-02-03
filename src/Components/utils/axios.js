@@ -1,12 +1,12 @@
 import axios from "axios";
-let apiURL = "https://foodie-backend-rvs.heroku.app.com/home/";
+let apiURL = "https://foodie-backend-rvs.herokuapp.com/home";
 let token = localStorage.getItem("user");
+// axios.defaults.headers.post['Access-Control-Allow-Origin'] = 'https://foodie-backend-rvs.herokuapp.com/home';
 const myaxios = axios.create({
   baseURL: apiURL,
   headers: {
     "Content-Type": "application/json",
     authorization: `${token}`,
-    // authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZGRhNGJmMmFjNTcwMTU1NDQzZmVjMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNjQxOTIzMTE1fQ.D5O3pcj2so6HcmqhHqkps-_guymKHPfcMmKgEzoiMxs`,
   },
 });
 
